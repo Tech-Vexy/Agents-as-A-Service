@@ -1,17 +1,11 @@
 import { NextResponse } from 'next/server';
-import { getProfile, updateProfile } from '@/lib/store';
+import { getActiveProfile } from '@/lib/store';
 
+// This is the endpoint the Voice Agent Backend hits to retrieve the currently active brain context
 export async function GET() {
-  const profile = getProfile();
-  return NextResponse.json(profile);
-}
-
-export async function PUT(request: Request) {
-  try {
-    const body = await request.json();
-    const updatedProfile = updateProfile(body);
-    return NextResponse.json(updatedProfile);
-  } catch {
-    return NextResponse.json({ error: 'Failed to update profile' }, { status: 400 });
+  const profile = getActiveProfile();
+  if (!profile) {
+    return NextResponse.json({ error: 'No active profile found' }, { status: 404 });
   }
+  return NextResponse.json(profile);
 }

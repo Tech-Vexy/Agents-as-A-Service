@@ -1,0 +1,37 @@
+
+> voice-agent-saas@0.1.0 dev
+> next dev --turbopack
+
+   ▲ Next.js 15.5.18 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.2:3000
+
+ ✓ Starting...
+ ✓ Ready in 1988ms
+ ○ Compiling / ...
+ ✓ Compiled / in 9.2s
+ GET / 200 in 10199ms
+ ○ Compiling /api/profiles ...
+ ✓ Compiled /api/profiles in 812ms
+ GET /api/profiles 200 in 1284ms
+ GET /api/profile/active 200 in 1343ms
+ GET / 200 in 225ms
+ GET /api/profiles 200 in 331ms
+ GET /api/profile/active 200 in 337ms
+ POST /api/profiles 200 in 352ms
+ ✓ Compiled /api/profiles/[id] in 233ms
+ PUT /api/profiles/1 200 in 1429ms
+ GET /api/profiles 200 in 303ms
+ GET /api/profile/active 200 in 304ms
+ GET / 200 in 165ms
+ GET /api/profiles 200 in 329ms
+ GET /api/profile/active 200 in 334ms
+ GET / 200 in 255ms
+ GET /api/profiles 200 in 405ms
+ GET /api/profile/active 200 in 407ms
+ POST /api/profiles 200 in 358ms
+ PUT /api/profiles/3 200 in 308ms
+ GET /api/profiles 200 in 325ms
+ GET /api/profile/active 200 in 331ms
+ PUT /api/profile/active 200 in 349ms
+[?25h
