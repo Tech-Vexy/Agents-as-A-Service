@@ -16,6 +16,7 @@
     "@livekit/components-react": "^2.9.21",
     "@types/express": "^5.0.6",
     "@types/ws": "^8.18.1",
+    "better-sqlite3": "^12.10.0",
     "express": "^5.2.1",
     "livekit-server-sdk": "^2.15.3",
     "lucide-react": "^1.16.0",
@@ -27,6 +28,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

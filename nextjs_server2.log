@@ -1,0 +1,25 @@
+
+> voice-agent-saas@0.1.0 dev
+> next dev --turbopack
+
+   ▲ Next.js 15.5.18 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.2:3000
+
+ ✓ Starting...
+ ✓ Ready in 1648ms
+ ○ Compiling / ...
+ ✓ Compiled / in 7.1s
+ GET / 200 in 8391ms
+ GET / 200 in 205ms
+ GET / 200 in 202ms
+ ✓ Compiled in 1721ms
+ ✓ Compiled / in 110ms
+ GET / 200 in 825ms
+ ○ Compiling /api/profile ...
+ ✓ Compiled /api/profile in 826ms
+ GET / 200 in 187ms
+ GET /api/profile 200 in 308ms
+ PUT /api/profile 200 in 319ms
+ GET / 200 in 299ms
+ GET /api/profile 200 in 294ms
