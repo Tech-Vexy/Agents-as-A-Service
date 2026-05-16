@@ -2,9 +2,14 @@ import { NextResponse } from 'next/server';
 import { getActiveProfileId, setActiveProfileId, initializeDatabase } from '@/lib/store';
 
 export async function GET() {
-  await initializeDatabase();
-  const activeId = await getActiveProfileId();
-  return NextResponse.json({ activeId });
+  try {
+    await initializeDatabase();
+    const activeId = await getActiveProfileId();
+    return NextResponse.json({ activeId });
+  } catch (err) {
+    console.error("Database initialization failed:", err);
+    return NextResponse.json({ activeId: null, error: 'Database connection failed' }, { status: 503 });
+  }
 }
 
 export async function PUT(request: Request) {

@@ -2,9 +2,14 @@ import { NextResponse } from 'next/server';
 import { getAllProfiles, createProfile, initializeDatabase } from '@/lib/store';
 
 export async function GET() {
-  await initializeDatabase();
-  const profiles = await getAllProfiles();
-  return NextResponse.json(profiles);
+  try {
+    await initializeDatabase();
+    const profiles = await getAllProfiles();
+    return NextResponse.json(profiles);
+  } catch (err) {
+    console.error("Database initialization failed:", err);
+    return NextResponse.json([], { status: 503 });
+  }
 }
 
 export async function POST(request: Request) {

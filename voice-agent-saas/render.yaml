@@ -3,7 +3,7 @@ services:
     name: voice-agent-saas-backend
     env: node
     rootDir: voice-agent-saas
-    buildCommand: npm install
+    buildCommand: npm install -g pnpm && pnpm install
     startCommand: npx tsx server/agent.ts dev
     envVars:
       - key: DATABASE_URL

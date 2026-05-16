@@ -17,6 +17,10 @@ const pool = new Pool({ connectionString });
 
 // Setup function to initialize schema if necessary
 export async function initializeDatabase() {
+  if (connectionString === 'postgres://user:password@localhost/dbname') {
+    console.warn("WARNING: No valid DATABASE_URL provided in environment variables. Database connections will likely fail.");
+  }
+
   const client = await pool.connect();
   try {
     await client.query(`
