@@ -68,9 +68,16 @@ export default async function agent(ctx: JobContext) {
 
     let businessProfile;
     try {
-      // Allow dynamic URL based on environment for production deployment
       const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://127.0.0.1:3000';
-      const response = await fetch(`${baseUrl}/api/profile`);
+
+      // If a specific PROFILE_ID is set in the environment (e.g. deployed distinct agent),
+      // fetch that specific profile. Otherwise, fall back to the dynamic "active" profile.
+      const profileId = process.env.PROFILE_ID;
+      const endpoint = profileId ? `/api/profiles/${profileId}` : '/api/profile';
+
+      console.log(`Fetching agent configuration from ${endpoint}`);
+
+      const response = await fetch(`${baseUrl}${endpoint}`);
       if (response.ok) {
         businessProfile = await response.json();
       } else {

@@ -25,6 +25,8 @@ export default function Home() {
 
   const [isSaving, setIsSaving] = useState(false);
   const [saveStatus, setSaveStatus] = useState("");
+  const [isDeploying, setIsDeploying] = useState(false);
+  const [deployStatus, setDeployStatus] = useState("");
 
   const [roomToken, setRoomToken] = useState("");
   const [isConnected, setIsConnected] = useState(false);
@@ -109,6 +111,32 @@ export default function Home() {
       }
     } catch (e) {
       console.error(e);
+    }
+  };
+
+  const deployAgentToCloud = async () => {
+    if (!currentProfile.id) return;
+    setIsDeploying(true);
+    setDeployStatus("Deploying distinct agent...");
+    try {
+      const res = await fetch('/api/agents/deploy', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ profileId: currentProfile.id, profileName: currentProfile.name })
+      });
+      if (res.ok) {
+        setDeployStatus("Deployed successfully!");
+        setTimeout(() => setDeployStatus(""), 3000);
+      } else {
+        const err = await res.json();
+        setDeployStatus("Deploy failed.");
+        console.error("Deploy failed:", err);
+      }
+    } catch (e) {
+      setDeployStatus("Deploy failed.");
+      console.error(e);
+    } finally {
+      setIsDeploying(false);
     }
   };
 
@@ -298,12 +326,23 @@ export default function Home() {
 
               <div className="flex items-center gap-4">
                 {saveStatus && <span className="text-sm text-green-400 flex items-center gap-1"><CheckCircle2 className="w-4 h-4"/> {saveStatus}</span>}
+                {deployStatus && <span className="text-sm text-blue-400 flex items-center gap-1">{deployStatus}</span>}
+
                 <button
                   onClick={saveProfile}
                   disabled={isSaving}
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded transition-colors disabled:opacity-50"
+                  className="bg-neutral-700 hover:bg-neutral-600 text-white font-medium py-2 px-4 rounded transition-colors disabled:opacity-50 text-sm"
                 >
-                  {isSaving ? "Saving..." : "Save Configuration"}
+                  {isSaving ? "Saving..." : "Save Config"}
+                </button>
+
+                <button
+                  onClick={deployAgentToCloud}
+                  disabled={isDeploying || isSaving}
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded transition-colors disabled:opacity-50 text-sm flex items-center gap-2"
+                >
+                  <Play className="w-4 h-4" />
+                  {isDeploying ? "Deploying..." : "Deploy to Cloud"}
                 </button>
               </div>
             </div>

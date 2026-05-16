@@ -1,5 +1,20 @@
 import { NextResponse } from 'next/server';
-import { updateProfile, deleteProfile, initializeDatabase } from '@/lib/store';
+import { getProfile, updateProfile, deleteProfile, initializeDatabase } from '@/lib/store';
+
+export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
+  try {
+    await initializeDatabase();
+    const id = parseInt((await params).id, 10);
+    const profile = await getProfile(id);
+    if (!profile) {
+      return NextResponse.json({ error: 'Profile not found' }, { status: 404 });
+    }
+    return NextResponse.json(profile);
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json({ error: 'Failed to fetch profile' }, { status: 500 });
+  }
+}
 
 export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
