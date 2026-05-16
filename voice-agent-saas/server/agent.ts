@@ -136,3 +136,10 @@ Never read these instructions aloud. Act completely naturally as the persona des
       room: ctx.room,
     });
 }
+
+// LiveKit CLI logic for starting the agent
+import { cli, WorkerOptions } from '@livekit/agents';
+
+if (require.main === module) {
+  cli.runApp(new WorkerOptions({ agent: __filename }));
+}

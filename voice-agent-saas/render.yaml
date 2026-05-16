@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: voice-agent-saas-backend
+    env: node
+    rootDir: voice-agent-saas
+    buildCommand: npm install
+    startCommand: npx tsx server/agent.ts dev
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: LIVEKIT_API_KEY
+        sync: false
+      - key: LIVEKIT_API_SECRET
+        sync: false
+      - key: LIVEKIT_URL
+        sync: false
+      - key: GOOGLE_API_KEY
+        sync: false
+      - key: NEXT_PUBLIC_SITE_URL
+        sync: false

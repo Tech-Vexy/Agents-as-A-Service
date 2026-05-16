@@ -20,7 +20,10 @@ export default function Home() {
     industry: "",
     technicalSpecs: "",
     tone: "",
+    avatar_url: "",
   });
+
+  const [activeProfileData, setActiveProfileData] = useState<BusinessProfile | null>(null);
 
   const [isSaving, setIsSaving] = useState(false);
   const [saveStatus, setSaveStatus] = useState("");
@@ -43,11 +46,15 @@ export default function Home() {
 
       // Determine which profile to show
       if (profilesData.length > 0) {
+         const activeProfile = profilesData.find((p: BusinessProfile) => p.id === activeData.activeId) || profilesData[0];
+         setActiveProfileData(activeProfile);
+
          const targetId = preserveSelectionId || activeData.activeId || profilesData[0].id;
          const targetProfile = profilesData.find((p: BusinessProfile) => p.id === targetId);
          if (targetProfile) setCurrentProfile(targetProfile);
       } else {
-         setCurrentProfile({ name: "", industry: "", technicalSpecs: "", tone: "" });
+         setCurrentProfile({ name: "", industry: "", technicalSpecs: "", tone: "", avatar_url: "" });
+         setActiveProfileData(null);
       }
     } catch (err) {
       console.error("Failed to load data", err);
@@ -249,6 +256,18 @@ export default function Home() {
               />
             </div>
 
+            <div className="flex flex-col gap-2">
+              <label className="text-sm font-medium text-neutral-400">Avatar Image URL (Optional)</label>
+              <input
+                type="url"
+                name="avatar_url"
+                value={currentProfile.avatar_url || ''}
+                onChange={handleProfileChange}
+                className="bg-neutral-950 border border-neutral-700 rounded px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
+                placeholder="https://example.com/avatar.png"
+              />
+            </div>
+
             <div className="flex flex-col gap-2 flex-1">
               <label className="text-sm font-medium text-neutral-400">Technical Specs & Logic</label>
               <textarea
@@ -308,8 +327,12 @@ export default function Home() {
 
           {!isConnected ? (
             <div className="flex flex-col items-center gap-4 text-center">
-              <div className="w-24 h-24 bg-neutral-950 rounded-full flex items-center justify-center border-4 border-neutral-800">
-                <Mic className="w-10 h-10 text-neutral-600" />
+              <div className="w-24 h-24 bg-neutral-950 rounded-full flex items-center justify-center border-4 border-neutral-800 overflow-hidden relative group">
+                {activeProfileData?.avatar_url ? (
+                  <img src={activeProfileData.avatar_url} alt="Agent Avatar" className="w-full h-full object-cover" />
+                ) : (
+                  <Mic className="w-10 h-10 text-neutral-600" />
+                )}
               </div>
               <div>
                 <h3 className="text-xl font-medium mb-1">Agent is Offline</h3>

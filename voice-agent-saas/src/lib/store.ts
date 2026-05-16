@@ -1,6 +1,4 @@
-import Database from 'better-sqlite3';
-import path from 'path';
-import fs from 'fs';
+import { Pool } from '@neondatabase/serverless';
 
 export interface BusinessProfile {
   id: number;
@@ -8,146 +6,135 @@ export interface BusinessProfile {
   industry: string;
   technicalSpecs: string;
   tone: string;
+  avatar_url?: string;
 }
 
-// Ensure the data directory exists
-const dbDir = path.resolve(process.cwd(), 'data');
-if (!fs.existsSync(dbDir)) {
-  fs.mkdirSync(dbDir, { recursive: true });
-}
+// Fallback to a dummy connection string if not provided, allowing build to pass
+const connectionString = process.env.DATABASE_URL || 'postgres://user:password@localhost/dbname';
 
-// Initialize SQLite database
-const dbPath = path.join(dbDir, 'profiles.db');
-const db = new Database(dbPath);
+// Initialize Neon database pool
+const pool = new Pool({ connectionString });
 
-// Create tables if they don't exist
-db.exec(`
-  CREATE TABLE IF NOT EXISTS profiles (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    industry TEXT NOT NULL,
-    technicalSpecs TEXT NOT NULL,
-    tone TEXT NOT NULL
-  );
+// Setup function to initialize schema if necessary
+export async function initializeDatabase() {
+  const client = await pool.connect();
+  try {
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS profiles (
+        id SERIAL PRIMARY KEY,
+        name TEXT NOT NULL,
+        industry TEXT NOT NULL,
+        "technicalSpecs" TEXT NOT NULL,
+        tone TEXT NOT NULL,
+        avatar_url TEXT
+      );
 
-  CREATE TABLE IF NOT EXISTS settings (
-    key TEXT PRIMARY KEY,
-    value TEXT NOT NULL
-  );
-`);
+      CREATE TABLE IF NOT EXISTS settings (
+        key TEXT PRIMARY KEY,
+        value TEXT NOT NULL
+      );
+    `);
 
-// Migration from old `profile` table to new `profiles` table
-try {
-  const hasOldTableStmt = db.prepare("SELECT count(*) as count FROM sqlite_master WHERE type='table' AND name='profile'");
-  const hasOldTableResult = hasOldTableStmt.get() as { count: number };
-  const hasOldTable = hasOldTableResult.count > 0;
+    // Insert default row if empty
+    const countRes = await client.query('SELECT count(*) as count FROM profiles');
+    const count = parseInt(countRes.rows[0].count, 10);
 
-  if (hasOldTable) {
-    const oldProfiles = db.prepare('SELECT * FROM profile').all() as BusinessProfile[];
-    if (oldProfiles.length > 0) {
-      const insertStmt = db.prepare(`
-        INSERT INTO profiles (name, industry, technicalSpecs, tone)
-        VALUES (?, ?, ?, ?)
-      `);
-      let firstId = null;
-      for (const p of oldProfiles) {
-        const info = insertStmt.run(p.name, p.industry, p.technicalSpecs, p.tone);
-        if (firstId === null) firstId = info.lastInsertRowid;
-      }
-      if (firstId !== null) {
-         db.prepare('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)').run('active_profile_id', firstId.toString());
-      }
+    if (count === 0) {
+      const insertRes = await client.query(`
+        INSERT INTO profiles (name, industry, "technicalSpecs", tone)
+        VALUES ($1, $2, $3, $4) RETURNING id
+      `, [
+        "SolarTech Solutions",
+        "Renewable Energy",
+        "Offers N-Type bifacial panels and standard monocrystalline panels. Standard panels are 400W. N-Type bifacial are 450W but capture 20% more in cloudy conditions.",
+        "Professional, technical, yet empathetic to user concerns."
+      ]);
+      const newId = insertRes.rows[0].id;
+
+      await client.query(`
+        INSERT INTO settings (key, value)
+        VALUES ($1, $2)
+        ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value
+      `, ['active_profile_id', newId.toString()]);
     }
-    db.exec('DROP TABLE profile');
+  } finally {
+    client.release();
   }
-} catch (e) {
-  console.error("Migration error:", e);
-}
-
-
-// Insert default row if empty
-const countStmt = db.prepare('SELECT count(*) as count FROM profiles');
-const result = countStmt.get() as { count: number };
-const count = result.count;
-
-if (count === 0) {
-  const insertStmt = db.prepare(`
-    INSERT INTO profiles (name, industry, technicalSpecs, tone)
-    VALUES (?, ?, ?, ?)
-  `);
-  const info = insertStmt.run(
-    "SolarTech Solutions",
-    "Renewable Energy",
-    "Offers N-Type bifacial panels and standard monocrystalline panels. Standard panels are 400W. N-Type bifacial are 450W but capture 20% more in cloudy conditions.",
-    "Professional, technical, yet empathetic to user concerns."
-  );
-  db.prepare('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)').run('active_profile_id', info.lastInsertRowid.toString());
 }
 
 // --- CRUD Operations ---
 
-export function getAllProfiles(): BusinessProfile[] {
-  return db.prepare('SELECT id, name, industry, technicalSpecs, tone FROM profiles ORDER BY name ASC').all() as BusinessProfile[];
+export async function getAllProfiles(): Promise<BusinessProfile[]> {
+  const res = await pool.query('SELECT id, name, industry, "technicalSpecs", tone, avatar_url FROM profiles ORDER BY name ASC');
+  return res.rows;
 }
 
-export function getProfile(id: number): BusinessProfile | undefined {
-  return db.prepare('SELECT id, name, industry, technicalSpecs, tone FROM profiles WHERE id = ?').get(id) as BusinessProfile | undefined;
+export async function getProfile(id: number): Promise<BusinessProfile | undefined> {
+  const res = await pool.query('SELECT id, name, industry, "technicalSpecs", tone, avatar_url FROM profiles WHERE id = $1', [id]);
+  return res.rows[0];
 }
 
-export function createProfile(profile: Omit<BusinessProfile, 'id'>): BusinessProfile {
-  const stmt = db.prepare(`
-    INSERT INTO profiles (name, industry, technicalSpecs, tone)
-    VALUES (?, ?, ?, ?)
-  `);
-  const info = stmt.run(profile.name, profile.industry, profile.technicalSpecs, profile.tone);
-  return getProfile(info.lastInsertRowid as number) as BusinessProfile;
+export async function createProfile(profile: Omit<BusinessProfile, 'id'>): Promise<BusinessProfile> {
+  const res = await pool.query(`
+    INSERT INTO profiles (name, industry, "technicalSpecs", tone, avatar_url)
+    VALUES ($1, $2, $3, $4, $5) RETURNING id, name, industry, "technicalSpecs", tone, avatar_url
+  `, [profile.name, profile.industry, profile.technicalSpecs, profile.tone, profile.avatar_url || null]);
+  return res.rows[0];
 }
 
-export function updateProfile(id: number, profile: Partial<BusinessProfile>): BusinessProfile {
-  const current = getProfile(id);
+export async function updateProfile(id: number, profile: Partial<BusinessProfile>): Promise<BusinessProfile> {
+  const current = await getProfile(id);
   if (!current) throw new Error("Profile not found");
 
   const updated = { ...current, ...profile };
 
-  const stmt = db.prepare(`
+  const res = await pool.query(`
     UPDATE profiles
-    SET name = ?, industry = ?, technicalSpecs = ?, tone = ?
-    WHERE id = ?
-  `);
+    SET name = $1, industry = $2, "technicalSpecs" = $3, tone = $4, avatar_url = $5
+    WHERE id = $6 RETURNING id, name, industry, "technicalSpecs", tone, avatar_url
+  `, [updated.name, updated.industry, updated.technicalSpecs, updated.tone, updated.avatar_url || null, id]);
 
-  stmt.run(updated.name, updated.industry, updated.technicalSpecs, updated.tone, id);
-  return updated;
+  return res.rows[0];
 }
 
-export function deleteProfile(id: number): void {
-  db.prepare('DELETE FROM profiles WHERE id = ?').run(id);
+export async function deleteProfile(id: number): Promise<void> {
+  await pool.query('DELETE FROM profiles WHERE id = $1', [id]);
   // If active, clear it or set to next available
-  if (getActiveProfileId() === id) {
-    const all = getAllProfiles();
+  const activeId = await getActiveProfileId();
+  if (activeId === id) {
+    const all = await getAllProfiles();
     if (all.length > 0) {
-       setActiveProfileId(all[0].id);
+       await setActiveProfileId(all[0].id);
     } else {
-       db.prepare('DELETE FROM settings WHERE key = ?').run('active_profile_id');
+       await pool.query('DELETE FROM settings WHERE key = $1', ['active_profile_id']);
     }
   }
 }
 
 // --- Active Profile Settings ---
 
-export function getActiveProfileId(): number | null {
-  const row = db.prepare("SELECT value FROM settings WHERE key = 'active_profile_id'").get() as { value: string } | undefined;
-  return row ? parseInt(row.value, 10) : null;
-}
-
-export function setActiveProfileId(id: number): void {
-  db.prepare('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)').run('active_profile_id', id.toString());
-}
-
-export function getActiveProfile(): BusinessProfile | undefined {
-  const id = getActiveProfileId();
-  if (id !== null) {
-    return getProfile(id);
+export async function getActiveProfileId(): Promise<number | null> {
+  const res = await pool.query("SELECT value FROM settings WHERE key = 'active_profile_id'");
+  if (res.rows.length > 0) {
+    return parseInt(res.rows[0].value, 10);
   }
-  const all = getAllProfiles();
+  return null;
+}
+
+export async function setActiveProfileId(id: number): Promise<void> {
+  await pool.query(`
+    INSERT INTO settings (key, value)
+    VALUES ($1, $2)
+    ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value
+  `, ['active_profile_id', id.toString()]);
+}
+
+export async function getActiveProfile(): Promise<BusinessProfile | undefined> {
+  const id = await getActiveProfileId();
+  if (id !== null) {
+    const profile = await getProfile(id);
+    if (profile) return profile;
+  }
+  const all = await getAllProfiles();
   return all.length > 0 ? all[0] : undefined;
 }
