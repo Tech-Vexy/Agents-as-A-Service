@@ -1,0 +1,131 @@
+
+> voice-agent-saas@0.1.0 dev
+> next dev --turbopack
+
+   ▲ Next.js 15.5.18 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.2:3000
+
+ ✓ Starting...
+ ✓ Ready in 1501ms
+ ○ Compiling / ...
+ ✓ Compiled / in 5.5s
+ GET / 200 in 6312ms
+ ○ Compiling /api/profiles ...
+ ✓ Compiled /api/profiles in 638ms
+ GET /api/profile/active 200 in 1024ms
+ GET /api/profiles 200 in 1071ms
+ GET / 200 in 216ms
+ GET /api/profiles 200 in 341ms
+ GET /api/profile/active 200 in 344ms
+ POST /api/profiles 200 in 347ms
+ ✓ Compiled /api/profiles/[id] in 196ms
+ PUT /api/profiles/4 200 in 1305ms
+ GET /api/profiles 200 in 330ms
+ GET /api/profile/active 200 in 335ms
+ GET / 200 in 164ms
+ GET /api/profiles 200 in 346ms
+ GET /api/profile/active 200 in 349ms
+ POST /api/profiles 200 in 305ms
+ PUT /api/profiles/5 200 in 310ms
+ GET /api/profiles 200 in 391ms
+ GET /api/profile/active 200 in 393ms
+ GET / 200 in 171ms
+ GET /api/profiles 200 in 319ms
+ GET /api/profile/active 200 in 323ms
+ GET / 200 in 180ms
+ GET /api/profiles 200 in 338ms
+ GET /api/profile/active 200 in 342ms
+ POST /api/profiles 200 in 313ms
+ PUT /api/profiles/6 200 in 300ms
+ GET /api/profiles 200 in 320ms
+ GET /api/profile/active 200 in 330ms
+ GET / 200 in 625ms
+ GET /api/profiles 200 in 357ms
+ GET /api/profile/active 200 in 366ms
+ POST /api/profiles 200 in 306ms
+ PUT /api/profiles/3 200 in 304ms
+ GET /api/profiles 200 in 316ms
+ GET /api/profile/active 200 in 323ms
+ GET / 200 in 178ms
+ GET /api/profiles 200 in 317ms
+ GET /api/profile/active 200 in 321ms
+ POST /api/profiles 200 in 281ms
+ PUT /api/profiles/3 200 in 319ms
+ GET /api/profiles 200 in 323ms
+ GET /api/profile/active 200 in 329ms
+ GET / 200 in 170ms
+ GET /api/profile/active 200 in 83ms
+ GET /api/profiles 200 in 85ms
+ GET / 200 in 164ms
+ GET /api/profiles 200 in 329ms
+ GET /api/profile/active 200 in 340ms
+ POST /api/profiles 200 in 300ms
+ PUT /api/profiles/9 200 in 321ms
+ PUT /api/profile/active 200 in 296ms
+ GET /api/profiles 200 in 335ms
+ GET /api/profile/active 200 in 321ms
+ POST /api/profiles 200 in 290ms
+ PUT /api/profiles/9 200 in 303ms
+ GET /api/profiles 200 in 317ms
+ GET /api/profile/active 200 in 320ms
+ GET / 200 in 170ms
+ GET /api/profile/active 200 in 102ms
+ GET /api/profiles 200 in 107ms
+ GET / 200 in 161ms
+ GET / 200 in 227ms
+ GET /api/profiles 200 in 338ms
+ GET /api/profile/active 200 in 341ms
+ POST /api/profiles 200 in 293ms
+ PUT /api/profiles/11 200 in 300ms
+ GET /api/profiles 200 in 425ms
+ GET /api/profile/active 200 in 429ms
+ PUT /api/profile/active 200 in 289ms
+ POST /api/profiles 200 in 285ms
+ PUT /api/profiles/11 200 in 333ms
+ GET /api/profiles 200 in 332ms
+ GET /api/profile/active 200 in 336ms
+ GET / 200 in 188ms
+ GET /api/profiles 200 in 88ms
+ GET /api/profile/active 200 in 86ms
+ GET / 200 in 187ms
+ GET /api/profiles 200 in 327ms
+ GET /api/profile/active 200 in 329ms
+ POST /api/profiles 400 in 294ms
+ PUT /api/profiles/11 200 in 309ms
+ GET /api/profiles 200 in 327ms
+ GET /api/profile/active 200 in 332ms
+ GET / 200 in 191ms
+ GET /api/profiles 200 in 101ms
+ GET /api/profile/active 200 in 99ms
+ GET / 200 in 157ms
+ GET /api/profiles 200 in 340ms
+ GET /api/profile/active 200 in 343ms
+ POST /api/profiles 400 in 293ms
+ PUT /api/profiles/11 400 in 353ms
+ GET / 200 in 203ms
+ GET /api/profiles 200 in 348ms
+ GET /api/profile/active 200 in 351ms
+ POST /api/profiles 400 in 302ms
+ PUT /api/profiles/11 400 in 314ms
+ GET / 200 in 248ms
+ GET /api/profile/active 200 in 79ms
+ GET /api/profiles 200 in 81ms
+ GET / 200 in 155ms
+ GET /api/profiles 200 in 333ms
+ GET /api/profile/active 200 in 339ms
+ POST /api/profiles 400 in 292ms
+ PUT /api/profiles/11 400 in 351ms
+ GET / 200 in 192ms
+ GET /api/profiles 200 in 352ms
+ GET /api/profile/active 200 in 356ms
+ POST /api/profiles 400 in 325ms
+ PUT /api/profiles/11 400 in 308ms
+ GET / 200 in 180ms
+ GET /api/profiles 200 in 353ms
+ GET /api/profile/active 200 in 358ms
+ POST /api/profiles 400 in 315ms
+ PUT /api/profiles/11 400 in 324ms
+ GET / 200 in 187ms
+ ✓ Compiled in 6.2s
+ ✓ Compiled in 1343ms

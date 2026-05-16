@@ -4,12 +4,10 @@ import { useEffect, useState } from "react";
 import {
   LiveKitRoom,
   RoomAudioRenderer,
-  VoiceAssistantControlBar,
-  BarVisualizer,
-  useVoiceAssistant,
 } from "@livekit/components-react";
-import { Mic, Settings, Play, Square, Plus, Trash2, CheckCircle2 } from "lucide-react";
+import { Mic, Settings, Play, Plus, Trash2, CheckCircle2 } from "lucide-react";
 import type { BusinessProfile } from "@/lib/store";
+import { AgentSessionView_01 } from "@/components/agents-ui/blocks/agent-session-view-01";
 
 export default function Home() {
   const [profiles, setProfiles] = useState<BusinessProfile[]>([]);
@@ -355,71 +353,20 @@ export default function Home() {
               connect={true}
               audio={true}
               video={false}
-              className="w-full h-full flex flex-col items-center justify-center gap-8"
+              className="w-full h-full flex flex-col relative"
               onDisconnected={disconnectFromRoom}
             >
-              <AgentVisualizer />
-              <div className="mt-auto">
-                <VoiceAssistantControlBar />
-              </div>
-              <button
-                onClick={disconnectFromRoom}
-                className="absolute top-6 right-6 flex items-center gap-2 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 font-medium py-2 px-4 rounded transition-colors"
-              >
-                <Square className="w-4 h-4" />
-                Disconnect
-              </button>
+              <AgentSessionView_01
+                className="w-full h-full"
+                audioVisualizerType="aura"
+                supportsVideoInput={false}
+                supportsScreenShare={false}
+              />
               <RoomAudioRenderer />
             </LiveKitRoom>
           )}
         </section>
       </main>
-    </div>
-  );
-}
-
-function AgentVisualizer() {
-  const { state, audioTrack } = useVoiceAssistant();
-
-  const statusColors: Record<string, string> = {
-    disconnected: "text-neutral-500",
-    connecting: "text-yellow-400",
-    connected: "text-blue-400",
-    listening: "text-green-400",
-    thinking: "text-purple-400",
-    speaking: "text-blue-400",
-  };
-
-  const currentState = state || "disconnected";
-  const colorClass = statusColors[currentState] || "text-neutral-500";
-
-  return (
-    <div className="flex flex-col items-center gap-6">
-      <div className={`text-sm font-mono uppercase tracking-widest ${colorClass}`}>
-        Agent Status: {currentState}
-      </div>
-
-      <div className="h-32 w-full max-w-md flex items-center justify-center">
-        {audioTrack ? (
-          <BarVisualizer
-            state={state}
-            trackRef={audioTrack}
-            barCount={7}
-            options={{ minHeight: 10 }}
-            className="w-full h-full text-blue-500"
-          />
-        ) : (
-          <div className="flex gap-1 items-center h-full">
-            {[...Array(7)].map((_, i) => (
-              <div
-                key={i}
-                className="w-3 bg-neutral-800 rounded-full h-4 animate-pulse"
-                style={{ animationDelay: `${i * 0.1}s` }}
-              />
-            ))}
-          </div>
-        )}
-      </div>
     </div>
   );
 }

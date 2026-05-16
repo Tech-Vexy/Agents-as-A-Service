@@ -1,0 +1,1230 @@
+
+> voice-agent-saas@0.1.0 dev
+> next dev --turbopack
+
+   ▲ Next.js 15.5.18 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.2:3000
+
+ ✓ Starting...
+ ✓ Ready in 1648ms
+ ○ Compiling / ...
+ ✓ Compiled / in 7.1s
+ GET / 200 in 8391ms
+ GET / 200 in 205ms
+ GET / 200 in 202ms
+ ✓ Compiled in 1721ms
+ ✓ Compiled / in 110ms
+ GET / 200 in 825ms
+ ○ Compiling /api/profile ...
+ ✓ Compiled /api/profile in 826ms
+ GET / 200 in 187ms
+ GET /api/profile 200 in 308ms
+ PUT /api/profile 200 in 319ms
+ GET / 200 in 299ms
+ GET /api/profile 200 in 294ms
+ ⨯ [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js from module 25767] {
+  digest: '3987723357',
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js from module 25767] {
+  digest: '3987723357',
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'
+  }
+}
+ ⨯ [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js from module 25767] {
+  digest: '3987723357',
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'
+  }
+}
+ ⨯ [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js from module 25767] {
+  digest: '3987723357',
+  page: '/',
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_livekit-client_dist_livekit-client_esm_mjs_c4a96121._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_livekit-client_dist_livekit-client_esm_mjs_c4a96121._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_livekit-client_dist_livekit-client_esm_mjs_c4a96121._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_livekit-client_dist_livekit-client_esm_mjs_c4a96121._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_livekit-client_dist_livekit-client_esm_mjs_c4a96121._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_livekit-client_dist_livekit-client_esm_mjs_c4a96121._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_livekit-client_dist_livekit-client_esm_mjs_c4a96121._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_livekit-client_dist_livekit-client_esm_mjs_c4a96121._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_livekit-client_dist_livekit-client_esm_mjs_c4a96121._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_@livekit_components-react_dist_36894db0._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_@livekit_components-react_dist_36894db0._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_@livekit_components-react_dist_36894db0._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_@livekit_components-react_dist_36894db0._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_@livekit_components-react_dist_36894db0._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_@livekit_components-react_dist_36894db0._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_@livekit_components-react_dist_36894db0._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_@livekit_components-react_dist_36894db0._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_@livekit_components-react_dist_36894db0._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js from module 25767] {
+  digest: '3987723357',
+  page: '/',
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js from module 25767] {
+  digest: '3987723357',
+  page: '/',
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js from module 25767] {
+  digest: '3987723357',
+  page: '/',
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js from module 25767] {
+  digest: '3987723357',
+  page: '/',
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js from module 25767] {
+  digest: '3987723357',
+  page: '/',
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js from module 25767] {
+  digest: '3987723357',
+  page: '/',
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__a8ab9a0d._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_esm_968ff1ee._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_compiled_next-devtools_index_a19313bf.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/node_modules_next_dist_server_route-modules_app-page_f354387c._.js'
+  }
+}
+[Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js from module 25767] {
+  [cause]: [Error: ENOENT: no such file or directory, open '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'] {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/app/voice-agent-saas/.next/server/chunks/ssr/[root-of-the-server]__c80f7c8f._.js'
+  }
+}
+ ○ Compiling /_error ...
+ GET / 500 in 79942ms
+ ✓ Compiled /_error in 77.2s
+[?25h
