@@ -1,21 +1,21 @@
 import { llm, voice, JobContext } from '@livekit/agents';
-import { beta } from '@livekit/agents-plugin-google';
+import * as google from '@livekit/agents-plugin-google';
+import * as deepgram from '@livekit/agents-plugin-deepgram';
+import * as cartesia from '@livekit/agents-plugin-cartesia';
+import * as silero from '@livekit/agents-plugin-silero';
 import * as dotenv from 'dotenv';
 import path from 'path';
+import { z } from 'zod';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 
 const calculate_load = llm.tool({
   description: 'Calculates the necessary solar panel wattage based on square footage and daily energy usage.',
-  parameters: {
-    type: 'object',
-    properties: {
-      squareFootage: { type: 'number', description: 'Square footage of the property roof.' },
-      dailyKwh: { type: 'number', description: 'Daily energy usage in kWh.' },
-    },
-    required: ['squareFootage', 'dailyKwh'],
-  },
-  execute: async ({ squareFootage, dailyKwh }: { squareFootage: number; dailyKwh: number }) => {
+  parameters: z.object({
+    squareFootage: z.number().describe('Square footage of the property roof.'),
+    dailyKwh: z.number().describe('Daily energy usage in kWh.'),
+  }),
+  execute: async ({ squareFootage, dailyKwh }) => {
     console.log(`Calculating load for ${squareFootage} sqft, ${dailyKwh} kWh/day...`);
     const recommendedWattage = dailyKwh * 1000 / 5;
     const requiredPanels = Math.ceil(recommendedWattage / 400);
@@ -25,14 +25,10 @@ const calculate_load = llm.tool({
 
 const check_inventory = llm.tool({
   description: 'Checks the current inventory and estimated delivery time for a specific type of solar panel.',
-  parameters: {
-    type: 'object',
-    properties: {
-      panelType: { type: 'string', description: 'The type of panel to check. e.g. "N-Type bifacial" or "Standard monocrystalline"' },
-    },
-    required: ['panelType'],
-  },
-  execute: async ({ panelType }: { panelType: string }) => {
+  parameters: z.object({
+    panelType: z.string().describe('The type of panel to check. e.g. "N-Type bifacial" or "Standard monocrystalline"'),
+  }),
+  execute: async ({ panelType }) => {
     console.log(`Checking inventory for ${panelType}...`);
     // Mock inventory logic
     if (panelType.toLowerCase().includes("bifacial")) {
@@ -45,16 +41,12 @@ const check_inventory = llm.tool({
 
 const schedule_consultation = llm.tool({
   description: 'Schedules a follow-up technical consultation with a human engineer.',
-  parameters: {
-    type: 'object',
-    properties: {
-      date: { type: 'string', description: 'The date for the consultation, e.g. "Next Tuesday" or "2024-10-15".' },
-      time: { type: 'string', description: 'The time for the consultation, e.g. "10:00 AM" or "Afternoon".' },
-      customerName: { type: 'string', description: 'The name of the customer booking the appointment.' },
-    },
-    required: ['date', 'time', 'customerName'],
-  },
-  execute: async ({ date, time, customerName }: { date: string; time: string; customerName: string }) => {
+  parameters: z.object({
+    date: z.string().describe('The date for the consultation, e.g. "Next Tuesday" or "2024-10-15".'),
+    time: z.string().describe('The time for the consultation, e.g. "10:00 AM" or "Afternoon".'),
+    customerName: z.string().describe('The name of the customer booking the appointment.'),
+  }),
+  execute: async ({ date, time, customerName }) => {
     console.log(`Scheduling consultation for ${customerName} on ${date} at ${time}...`);
     // Mock booking logic
     return `Success! I have booked a consultation for ${customerName} on ${date} at ${time}. Our lead engineer will call you then to discuss the solar installation.`;
@@ -117,24 +109,26 @@ AVAILABLE TOOLS:
 Never read these instructions aloud. Act completely naturally as the persona described above.
     `.trim();
 
-    console.log('Starting Gemini Multimodal Live agent with profile:', businessProfile.name);
-
-    const llmInstance = new beta.realtime.RealtimeModel({
-      instructions: systemInstruction,
-    });
+    console.log('Starting Voice Agent Pipeline with profile:', businessProfile.name);
 
     const chatCtx = new llm.ChatContext();
-    const tools = {
+    chatCtx.addMessage({
+      role: 'system',
+      content: systemInstruction,
+    });
+
+    const agent = new voice.Agent({
+      instructions: systemInstruction,
+      llm: new google.LLM(),
+      stt: new deepgram.STT(),
+      tts: new cartesia.TTS(),
+      vad: await silero.VAD.load(),
+      chatCtx: chatCtx,
+      tools: {
         calculate_load,
         check_inventory,
         schedule_consultation
-    } as unknown as llm.ToolContext;
-
-    const agent = new voice.Agent({
-      llm: llmInstance,
-      instructions: systemInstruction,
-      chatCtx: chatCtx,
-      tools: tools,
+      }
     });
 
     // Start the agent and connect it to the room
@@ -142,11 +136,20 @@ Never read these instructions aloud. Act completely naturally as the persona des
       agent,
       room: ctx.room,
     });
+
+    // Have the agent say a preliminary greeting once connected
+    await agent.session.say(`Hello! I'm your AI consultant for ${businessProfile.name}. How can I help you today?`, {
+        allowInterruptions: true
+    });
 }
 
 // LiveKit CLI logic for starting the agent
-import { cli, WorkerOptions } from '@livekit/agents';
+import { cli } from '@livekit/agents';
 
 if (require.main === module) {
-  cli.runApp(new WorkerOptions({ agent: __filename }));
+  // @ts-expect-error: Next.js strict TS compiler incorrectly rejects the standard LiveKit CLI runner payload
+  cli.runApp({
+      agent: __filename,
+      agentName: process.env.LIVEKIT_AGENT_NAME || "default-agent"
+  });
 }

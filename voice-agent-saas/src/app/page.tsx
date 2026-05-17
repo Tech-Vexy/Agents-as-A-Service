@@ -11,7 +11,6 @@ import { AgentSessionView_01 } from "@/components/agents-ui/blocks/agent-session
 
 export default function Home() {
   const [profiles, setProfiles] = useState<BusinessProfile[]>([]);
-  const [activeProfileId, setActiveProfileId] = useState<number | null>(null);
 
   const [currentProfile, setCurrentProfile] = useState<Partial<BusinessProfile>>({
     name: "",
@@ -21,8 +20,6 @@ export default function Home() {
     avatar_url: "",
   });
 
-  const [activeProfileData, setActiveProfileData] = useState<BusinessProfile | null>(null);
-
   const [isSaving, setIsSaving] = useState(false);
   const [saveStatus, setSaveStatus] = useState("");
   const [isDeploying, setIsDeploying] = useState(false);
@@ -31,30 +28,21 @@ export default function Home() {
   const [roomToken, setRoomToken] = useState("");
   const [isConnected, setIsConnected] = useState(false);
 
-  // Load all profiles and the active profile ID
+  // Load all profiles
   const loadData = async (preserveSelectionId?: number) => {
     try {
-      const [profilesRes, activeRes] = await Promise.all([
-        fetch("/api/profiles"),
-        fetch("/api/profile/active")
-      ]);
+      const profilesRes = await fetch("/api/profiles");
       const profilesData = await profilesRes.json();
-      const activeData = await activeRes.json();
 
       setProfiles(profilesData);
-      setActiveProfileId(activeData.activeId);
 
       // Determine which profile to show
       if (profilesData.length > 0) {
-         const activeProfile = profilesData.find((p: BusinessProfile) => p.id === activeData.activeId) || profilesData[0];
-         setActiveProfileData(activeProfile);
-
-         const targetId = preserveSelectionId || activeData.activeId || profilesData[0].id;
-         const targetProfile = profilesData.find((p: BusinessProfile) => p.id === targetId);
+         const targetId = preserveSelectionId || profilesData[0].id;
+         const targetProfile = profilesData.find((p: BusinessProfile) => p.id === targetId) || profilesData[0];
          if (targetProfile) setCurrentProfile(targetProfile);
       } else {
          setCurrentProfile({ name: "", industry: "", technicalSpecs: "", tone: "", avatar_url: "" });
-         setActiveProfileData(null);
       }
     } catch (err) {
       console.error("Failed to load data", err);
@@ -165,26 +153,12 @@ export default function Home() {
     }
   };
 
-  const makeProfileLive = async () => {
-      if (!currentProfile.id) return;
-      try {
-        const res = await fetch("/api/profile/active", {
-           method: "PUT",
-           headers: { "Content-Type": "application/json" },
-           body: JSON.stringify({ activeId: currentProfile.id })
-        });
-        if (res.ok) {
-           const data = await res.json();
-           setActiveProfileId(data.activeId);
-        }
-      } catch (e) {
-        console.error(e);
-      }
-  };
-
   const connectToRoom = async () => {
     try {
-      const res = await fetch("/api/token?roomName=test-room");
+      const url = currentProfile.id
+        ? `/api/token?profileId=${currentProfile.id}`
+        : `/api/token`;
+      const res = await fetch(url);
       const data = await res.json();
       if (data.token) {
         setRoomToken(data.token);
@@ -201,8 +175,6 @@ export default function Home() {
     setIsConnected(false);
     setRoomToken("");
   };
-
-  const isActive = currentProfile.id && currentProfile.id === activeProfileId;
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans p-4 flex flex-col">
@@ -245,21 +217,6 @@ export default function Home() {
 
           {currentProfile.id ? (
             <>
-            <div className="flex items-center justify-between bg-neutral-950 p-3 rounded border border-neutral-800">
-              <div className="flex items-center gap-2">
-                 <div className={`w-2.5 h-2.5 rounded-full ${isActive ? 'bg-green-500 animate-pulse' : 'bg-neutral-600'}`}></div>
-                 <span className="text-sm font-medium">{isActive ? 'This profile is currently LIVE' : 'This profile is inactive'}</span>
-              </div>
-              {!isActive && (
-                <button
-                  onClick={makeProfileLive}
-                  className="text-xs bg-green-600/20 text-green-400 hover:bg-green-600/30 px-3 py-1.5 rounded transition-colors font-medium border border-green-600/30"
-                >
-                  Hot Swap to Live
-                </button>
-              )}
-            </div>
-
             <div className="flex flex-col gap-2 mt-2">
               <label className="text-sm font-medium text-neutral-400">Company Name</label>
               <input
@@ -365,8 +322,8 @@ export default function Home() {
           {!isConnected ? (
             <div className="flex flex-col items-center gap-4 text-center">
               <div className="w-24 h-24 bg-neutral-950 rounded-full flex items-center justify-center border-4 border-neutral-800 overflow-hidden relative group">
-                {activeProfileData?.avatar_url ? (
-                  <img src={activeProfileData.avatar_url} alt="Agent Avatar" className="w-full h-full object-cover" />
+                {currentProfile?.avatar_url ? (
+                  <img src={currentProfile.avatar_url} alt="Agent Avatar" className="w-full h-full object-cover" />
                 ) : (
                   <Mic className="w-10 h-10 text-neutral-600" />
                 )}

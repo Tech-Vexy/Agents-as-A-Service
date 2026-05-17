@@ -57,26 +57,38 @@ export async function POST(request: Request) {
         const repoUrl = process.env.GITHUB_REPO_URL || "https://github.com/your-username/your-repo";
         const branch = process.env.GITHUB_BRANCH || "main";
 
+        const renderOwnerId = process.env.RENDER_OWNER_ID;
+        if (!renderOwnerId) {
+            return NextResponse.json({ error: 'RENDER_OWNER_ID is not configured on the server.' }, { status: 500 });
+        }
+
         const createPayload = {
+            ownerId: renderOwnerId,
             type: "background_worker",
             name: serviceName,
             repo: repoUrl,
             branch: branch,
             env: "node",
             region: "oregon",
-            plan: "free",
-            rootDir: "voice-agent-saas",
-            buildCommand: "npm install -g pnpm && pnpm install",
-            startCommand: "npx tsx server/agent.ts dev",
-            envVars: [
-                { key: "PROFILE_ID", value: profileId.toString() },
-                { key: "DATABASE_URL", value: process.env.DATABASE_URL || "" },
-                { key: "LIVEKIT_API_KEY", value: process.env.LIVEKIT_API_KEY || "" },
-                { key: "LIVEKIT_API_SECRET", value: process.env.LIVEKIT_API_SECRET || "" },
-                { key: "LIVEKIT_URL", value: process.env.LIVEKIT_URL || "" },
-                { key: "GOOGLE_API_KEY", value: process.env.GOOGLE_API_KEY || "" },
-                { key: "NEXT_PUBLIC_SITE_URL", value: process.env.NEXT_PUBLIC_SITE_URL || "" }
-            ]
+            serviceDetails: {
+                env: "node",
+                plan: "free",
+                rootDir: "voice-agent-saas",
+                buildCommand: "npm install -g pnpm && pnpm install",
+                startCommand: "npx tsx server/agent.ts dev",
+                envVars: [
+                    { key: "PROFILE_ID", value: profileId.toString() },
+                    { key: "LIVEKIT_AGENT_NAME", value: `tenant-${profileId}` },
+                    { key: "DATABASE_URL", value: process.env.DATABASE_URL || "" },
+                    { key: "LIVEKIT_API_KEY", value: process.env.LIVEKIT_API_KEY || "" },
+                    { key: "LIVEKIT_API_SECRET", value: process.env.LIVEKIT_API_SECRET || "" },
+                    { key: "LIVEKIT_URL", value: process.env.LIVEKIT_URL || "" },
+                    { key: "GOOGLE_API_KEY", value: process.env.GOOGLE_API_KEY || "" },
+                    { key: "CARTESIA_API_KEY", value: process.env.CARTESIA_API_KEY || "" },
+                    { key: "DEEPGRAM_API_KEY", value: process.env.DEEPGRAM_API_KEY || "" },
+                    { key: "NEXT_PUBLIC_SITE_URL", value: process.env.NEXT_PUBLIC_SITE_URL || "" }
+                ]
+            }
         };
 
         const createResponse = await fetch(`https://api.render.com/v1/services`, {
