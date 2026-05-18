@@ -70,7 +70,7 @@ export default function Home() {
 
   return (
     <LiveKitRoom
-      {/* @ts-expect-error */}
+      // @ts-expect-error - LiveKitRoom expects different room type
       room={session.room}
       connect={session.isConnected}
       className="flex flex-col min-h-screen"

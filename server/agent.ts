@@ -1,5 +1,5 @@
 import { llm, voice, JobContext } from '@livekit/agents';
-// @ts-ignore
+// @ts-expect-error - multimodal is not yet in the official types
 import { multimodal } from '@livekit/agents';
 import * as google from '@livekit/agents-plugin-google';
 import * as dotenv from 'dotenv';
@@ -117,7 +117,7 @@ Never read these instructions aloud. Act completely naturally as the persona des
       instructions: systemInstruction,
     });
 
-    const AgentClass = (multimodal as any)?.MultimodalAgent || voice.Agent;
+    const AgentClass = (multimodal as { MultimodalAgent?: typeof voice.Agent })?.MultimodalAgent || voice.Agent;
     const agent = new AgentClass({
       llm: model,
       model: model, // fallback for older versions
@@ -134,7 +134,7 @@ Never read these instructions aloud. Act completely naturally as the persona des
     });
 
     // Start the agent and connect it to the room
-    const session = await (agent as any).start(ctx.room);
+    const session = await (agent as voice.Agent & { start: (room: typeof ctx.room) => Promise<{ say: (text: string, options?: { allowInterruptions?: boolean }) => void }> }).start(ctx.room);
 
     // Ensure the session is ready before attempting to speak
     console.log('Voice session started for room:', ctx.room.name);
