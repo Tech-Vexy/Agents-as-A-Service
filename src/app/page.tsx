@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import {
   LiveKitRoom,
   RoomAudioRenderer,
-  useSession,
+  useRoomContext,
 } from "@livekit/components-react";
 import { 
   Mic, 
@@ -16,7 +16,6 @@ import {
 } from "lucide-react";
 import type { BusinessProfile } from "@/lib/store";
 import { AgentSessionView_01 } from "@/components/agents-ui/blocks/agent-session-view-01";
-import { TokenSource } from "livekit-client";
 import { useAgentErrors } from "@/hooks/useAgentErrors";
 
 function AgentErrorHandler() {
@@ -34,8 +33,29 @@ export default function Home() {
     avatar_url: "",
   });
   const [isLoading, setIsLoading] = useState(true);
+  const [token, setToken] = useState<string>("");
+  const [shouldConnect, setShouldConnect] = useState(false);
 
   const [activeAgentIds, setActiveAgentIds] = useState<number[]>([]);
+
+  // Fetch token when profile changes
+  useEffect(() => {
+    const fetchToken = async () => {
+      if (!currentProfile?.id) return;
+      
+      try {
+        const response = await fetch(`/api/token?profileId=${currentProfile.id}`);
+        if (response.ok) {
+          const data = await response.json();
+          setToken(data.token);
+        }
+      } catch (err) {
+        console.error("Failed to fetch token:", err);
+      }
+    };
+
+    fetchToken();
+  }, [currentProfile?.id]);
 
   // Load all profiles
   const loadData = async (preserveSelectionId?: number) => {
@@ -80,11 +100,6 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [currentProfile.id]);
 
-  const tokenEndpoint = useMemo(() => {
-    if (!currentProfile?.id) return '/api/token?profileId=0';
-    return `/api/token?profileId=${currentProfile.id}`;
-  }, [currentProfile?.id]);
-
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-neutral-950 text-neutral-100">
@@ -116,11 +131,22 @@ export default function Home() {
     );
   }
 
+  if (!token) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-neutral-950 text-neutral-100">
+        <div className="text-center">
+          <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-blue-500" />
+          <p className="text-lg">Connecting to LiveKit...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <LiveKitRoom
-      token={tokenEndpoint}
+      token={token}
       serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_URL || ''}
-      connect={false}
+      connect={shouldConnect}
       className="flex flex-col min-h-screen"
     >
       <AppContent 
@@ -128,7 +154,8 @@ export default function Home() {
         currentProfile={currentProfile}
         setCurrentProfile={setCurrentProfile}
         activeAgentIds={activeAgentIds}
-        tokenEndpoint={tokenEndpoint}
+        onConnect={() => setShouldConnect(true)}
+        onDisconnect={() => setShouldConnect(false)}
       />
     </LiveKitRoom>
   );
@@ -139,15 +166,17 @@ function AppContent({
   currentProfile, 
   setCurrentProfile, 
   activeAgentIds,
-  tokenEndpoint
+  onConnect,
+  onDisconnect
 }: {
   profiles: BusinessProfile[];
   currentProfile: Partial<BusinessProfile>;
   setCurrentProfile: (p: Partial<BusinessProfile>) => void;
   activeAgentIds: number[];
-  tokenEndpoint: string;
+  onConnect: () => void;
+  onDisconnect: () => void;
 }) {
-  const session = useSession(TokenSource.endpoint(tokenEndpoint));
+  const room = useRoomContext();
   const [isSaving, setIsSaving] = useState(false);
   const [saveStatus, setSaveStatus] = useState("");
   const [isDeploying, setIsDeploying] = useState(false);
@@ -219,8 +248,8 @@ function AppContent({
         </div>
         <div className="flex items-center gap-4">
            <div className="flex items-center gap-2 bg-neutral-800/50 px-3 py-1.5 rounded-full border border-neutral-700">
-             <div className={`w-2 h-2 rounded-full ${session.isConnected ? "bg-green-500 animate-pulse" : "bg-neutral-600"}`} />
-             <span className="text-xs font-mono uppercase tracking-wider">{session.isConnected ? "Online" : "Offline"}</span>
+             <div className={`w-2 h-2 rounded-full ${room.state === 'connected' ? "bg-green-500 animate-pulse" : "bg-neutral-600"}`} />
+             <span className="text-xs font-mono uppercase tracking-wider">{room.state === 'connected' ? "Online" : "Offline"}</span>
            </div>
         </div>
       </header>
@@ -303,7 +332,7 @@ function AppContent({
         </section>
 
         <section className="bg-neutral-900 rounded-xl p-6 shadow-lg flex flex-col border border-neutral-800 relative overflow-hidden min-h-[500px]">
-          {!session.isConnected ? (
+          {room.state !== 'connected' ? (
             <div className="flex-1 flex flex-col items-center justify-center text-center gap-6 animate-in fade-in zoom-in duration-500 h-full">
                <div className="w-24 h-24 bg-blue-600/10 rounded-full flex items-center justify-center border border-blue-500/30">
                  <Mic className="w-10 h-10 text-blue-500" />
@@ -313,18 +342,18 @@ function AppContent({
                  <p className="text-neutral-400 max-w-sm mt-2">Ready to test the live consultation flow for this tenant.</p>
                </div>
                <button 
-                 onClick={() => session.start()} 
-                 disabled={session.connectionState === 'connecting' || !currentProfile.id}
+                 onClick={() => onConnect()} 
+                 disabled={room.state === 'connecting' || !currentProfile.id}
                  className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 px-10 py-4 rounded-full font-bold text-lg flex items-center gap-3 shadow-xl shadow-blue-900/20 transition-all active:scale-95"
                >
-                 {session.connectionState === 'connecting' ? <><Loader2 className="w-6 h-6 animate-spin" /> Connecting...</> : <><Play className="w-6 h-6 fill-current" /> Initialize Session</>}
+                 {room.state === 'connecting' ? <><Loader2 className="w-6 h-6 animate-spin" /> Connecting...</> : <><Play className="w-6 h-6 fill-current" /> Initialize Session</>}
                </button>
             </div>
           ) : (
             <div className="flex-1 flex flex-col animate-in fade-in duration-700 h-full">
               <AgentSessionView_01 
                 className="flex-1"
-                onDisconnect={() => session.end()}
+                onDisconnect={() => { room.disconnect(); onDisconnect(); }}
               />
               <RoomAudioRenderer />
               <AgentErrorHandler />
