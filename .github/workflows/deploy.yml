@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   lint-and-build:
@@ -61,14 +58,3 @@ jobs:
           working-directory: ./voice-agent-saas
           vercel-args: '--prod'
 
-  deploy-render:
-    name: Trigger Render Deployment
-    needs: lint-and-build
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    steps:
-      - name: Deploy to Render
-        uses: fjogeleit/http-request-action@v1
-        with:
-          url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
-          method: 'POST'

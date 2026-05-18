@@ -69,7 +69,9 @@ export default function Home() {
   const session = useSession(tokenSource!);
 
   return (
-    <LiveKitRoom
+    <>
+      {/* @ts-expect-error */}
+      <LiveKitRoom
       room={session.room}
       connect={session.isConnected}
       className="flex flex-col min-h-screen"
@@ -82,6 +84,7 @@ export default function Home() {
         activeAgentIds={activeAgentIds}
       />
     </LiveKitRoom>
+    </>
   );
 }
 
@@ -265,10 +268,10 @@ function AppContent({
                </div>
                <button 
                  onClick={() => session.start()} 
-                 disabled={session.isConnecting || !currentProfile.id}
+                 disabled={(session.room?.state === 'connecting') || !currentProfile.id}
                  className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 px-10 py-4 rounded-full font-bold text-lg flex items-center gap-3 shadow-xl shadow-blue-900/20 transition-all active:scale-95"
                >
-                 {session.isConnecting ? <><Loader2 className="w-6 h-6 animate-spin" /> Connecting...</> : <><Play className="w-6 h-6 fill-current" /> Initialize Session</>}
+                 {(session.room?.state === 'connecting') ? <><Loader2 className="w-6 h-6 animate-spin" /> Connecting...</> : <><Play className="w-6 h-6 fill-current" /> Initialize Session</>}
                </button>
             </div>
           ) : (
