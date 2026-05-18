@@ -33,12 +33,14 @@ export default function Home() {
     tone: "",
     avatar_url: "",
   });
+  const [isLoading, setIsLoading] = useState(true);
 
   const [activeAgentIds, setActiveAgentIds] = useState<number[]>([]);
 
   // Load all profiles
   const loadData = async (preserveSelectionId?: number) => {
     try {
+      setIsLoading(true);
       const [profilesRes, activeRes] = await Promise.all([
         fetch("/api/profiles"),
         fetch("/api/agents/active")
@@ -46,16 +48,16 @@ export default function Home() {
       
       if (!profilesRes.ok) {
         console.error("Failed to fetch profiles:", profilesRes.status);
+        setIsLoading(false);
         return;
       }
       
       if (!activeRes.ok) {
         console.error("Failed to fetch active agents:", activeRes.status);
-        return;
       }
       
       const profilesData = await profilesRes.json();
-      const activeData = await activeRes.json();
+      const activeData = activeRes.ok ? await activeRes.json() : { activeServices: [] };
 
       setProfiles(profilesData || []);
       setActiveAgentIds(activeData?.activeServices?.map((s: { profileId: number }) => s.profileId) || []);
@@ -67,6 +69,8 @@ export default function Home() {
       }
     } catch (err) {
       console.error("Failed to load data", err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -81,10 +85,33 @@ export default function Home() {
     return `/api/token?profileId=${currentProfile.id}`;
   }, [currentProfile?.id]);
 
-  if (!currentProfile?.id) {
+  if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-neutral-950 text-neutral-100">
-        <p>Loading profiles...</p>
+        <div className="text-center">
+          <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-blue-500" />
+          <p className="text-lg">Loading profiles...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!currentProfile?.id && profiles.length === 0) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-neutral-950 text-neutral-100">
+        <div className="text-center max-w-md">
+          <Settings className="w-16 h-16 mx-auto mb-4 text-blue-500" />
+          <h2 className="text-2xl font-bold mb-2">No Profiles Found</h2>
+          <p className="text-neutral-400 mb-6">
+            The database is empty or not connected. Please check your DATABASE_URL environment variable.
+          </p>
+          <button 
+            onClick={() => loadData()}
+            className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-medium"
+          >
+            Retry Connection
+          </button>
+        </div>
       </div>
     );
   }
