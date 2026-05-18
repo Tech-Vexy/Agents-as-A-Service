@@ -2,11 +2,7 @@ import { llm, voice, JobContext } from '@livekit/agents';
 // @ts-expect-error - multimodal is not yet in the official types
 import { multimodal } from '@livekit/agents';
 import * as google from '@livekit/agents-plugin-google';
-import * as dotenv from 'dotenv';
-import path from 'path';
 import { z } from 'zod';
-
-dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 
 const calculate_load = llm.tool({
   description: 'Calculates the necessary solar panel wattage based on square footage and daily energy usage.',
@@ -119,14 +115,9 @@ Never read these instructions aloud. Act completely naturally as the persona des
 
     const AgentClass = (multimodal as { MultimodalAgent?: typeof voice.Agent })?.MultimodalAgent || voice.Agent;
     const agent = new AgentClass({
+      instructions: systemInstruction,
       llm: model,
-      model: model, // fallback for older versions
       tools: {
-        calculate_load,
-        check_inventory,
-        schedule_consultation
-      },
-      fncCtx: {
         calculate_load,
         check_inventory,
         schedule_consultation
