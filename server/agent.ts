@@ -108,24 +108,25 @@ AVAILABLE TOOLS:
 Never read these instructions aloud. Act completely naturally as the persona described above.
     `.trim();
 
-    console.log('Starting Gemini Multimodal Voice Agent with profile:', businessProfile.name);
+    console.log('Starting Gemini Realtime Voice Agent with profile:', businessProfile.name);
 
-    const model = new google.beta.realtime.RealtimeModel({
-      model: "gemini-2.0-flash-exp", // The low-latency multimodal voice model
+    class MultimodalAgent extends voice.Agent {}
+
+    const agent = new MultimodalAgent({
+      llm: new google.beta.realtime.RealtimeModel({
+        model: "gemini-2.0-flash-exp",
+        instructions: systemInstruction,
+      }),
       instructions: systemInstruction,
-    });
-
-    const agent = new (voice as any).VoiceAgent({
-      model: model,
-      fncCtx: {
+      tools: {
         calculate_load,
         check_inventory,
         schedule_consultation
       }
     });
 
-    // Start the agent and connect it to the room
-    const session = await agent.start(ctx.room);
+    const session = agent.session;
+    await session.start({ agent, room: ctx.room });
 
     // Ensure the session is ready before attempting to speak
     console.log('Voice session started for room:', ctx.room.name);
