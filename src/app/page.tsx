@@ -69,9 +69,8 @@ export default function Home() {
   const session = useSession(tokenSource!);
 
   return (
-    <>
+    <LiveKitRoom
       {/* @ts-expect-error */}
-      <LiveKitRoom
       room={session.room}
       connect={session.isConnected}
       className="flex flex-col min-h-screen"
@@ -84,7 +83,6 @@ export default function Home() {
         activeAgentIds={activeAgentIds}
       />
     </LiveKitRoom>
-    </>
   );
 }
 

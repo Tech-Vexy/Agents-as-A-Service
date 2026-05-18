@@ -1,4 +1,6 @@
 import { llm, voice, JobContext } from '@livekit/agents';
+// @ts-ignore
+import { multimodal } from '@livekit/agents';
 import * as google from '@livekit/agents-plugin-google';
 import * as dotenv from 'dotenv';
 import path from 'path';
@@ -110,23 +112,29 @@ Never read these instructions aloud. Act completely naturally as the persona des
 
     console.log('Starting Gemini Realtime Voice Agent with profile:', businessProfile.name);
 
-    class MultimodalAgent extends voice.Agent {}
-
-    const agent = new MultimodalAgent({
-      llm: new google.beta.realtime.RealtimeModel({
-        model: "gemini-2.0-flash-exp",
-        instructions: systemInstruction,
-      }),
+    const model = new google.beta.realtime.RealtimeModel({
+      model: "gemini-2.0-flash-exp",
       instructions: systemInstruction,
+    });
+
+    const AgentClass = (multimodal as any)?.MultimodalAgent || voice.Agent;
+    const agent = new AgentClass({
+      llm: model,
+      model: model, // fallback for older versions
       tools: {
+        calculate_load,
+        check_inventory,
+        schedule_consultation
+      },
+      fncCtx: {
         calculate_load,
         check_inventory,
         schedule_consultation
       }
     });
 
-    const session = agent.session;
-    await session.start({ agent, room: ctx.room });
+    // Start the agent and connect it to the room
+    const session = await (agent as any).start(ctx.room);
 
     // Ensure the session is ready before attempting to speak
     console.log('Voice session started for room:', ctx.room.name);
