@@ -88,6 +88,7 @@ export function AgentConsole({ onConnect, onDisconnect, profileName, canConnect 
           <div className="flex-1 flex flex-col animate-in fade-in duration-700 h-full">
             <AgentSessionView_01 
               className="flex-1"
+              audioVisualizerType="wave"
               onDisconnect={() => { room.disconnect(); onDisconnect(); }}
             />
             <RoomAudioRenderer />
