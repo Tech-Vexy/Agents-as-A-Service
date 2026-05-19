@@ -87,10 +87,34 @@ IMPORTANT:
     // Ensure the session is ready before attempting to speak
     console.log('Voice session started for room:', ctx.room.name);
 
-    // Use the session to speak the greeting
-    session.say(`Hello! Thank you for contacting ${businessProfile.name}. I'm your AI assistant. How can I help you today?`, {
-        allowInterruptions: true
-    });
+    const greeting = `Hello! Thank you for contacting ${businessProfile.name}. I'm your AI assistant. How can I help you today?`;
+
+    // Wait for the user to join the room before speaking the greeting
+    let hasGreeted = false;
+
+    // Helper to trigger greeting
+    const triggerGreeting = () => {
+      if (!hasGreeted) {
+        hasGreeted = true;
+        console.log("User detected. Speaking greeting...");
+        session.say(greeting, { allowInterruptions: true });
+      }
+    };
+
+    // If there is already a remote participant in the room, greet them immediately
+    if (ctx.room.remoteParticipants.size > 0) {
+      triggerGreeting();
+    } else {
+      // Otherwise, wait for a participant to connect
+      console.log("Waiting for user to join before speaking...");
+      // Use any to bypass TS compilation error since isAgent might not be on the core participant type
+      ctx.room.on('participantConnected', (participant: any) => {
+         // Optionally, ignore other agents if there are any
+         if (!participant.isAgent && participant.kind !== 'agent' && participant.kind !== 2) {
+            triggerGreeting();
+         }
+      });
+    }
 }
 
 // LiveKit CLI logic for starting the agent
