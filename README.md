@@ -4,11 +4,11 @@ A hot-swappable Voice-Agent-as-a-Service MVP platform built with Next.js 15, Tai
 
 ## Architecture
 
-This project maps each business profile to distinct, individually deployed agent microservices isolated by tenant.
+This project uses a single, universal agent architecture. A single LiveKit worker dynamically fetches and applies the correct business profile from the database based on the incoming room context.
 - **Frontend/Backend APIs**: Built with Next.js 15 (App Router).
 - **Database**: Hosted Neon PostgreSQL database (via `@neondatabase/serverless`).
-- **Voice Agent**: Standalone Node.js process utilizing the standard LiveKit Gemini Realtime API paradigm (`google.beta.realtime.RealtimeModel`). Programmatically locked to a specific `PROFILE_ID` and `LIVEKIT_AGENT_NAME`.
-- **CI/CD**: Deploys to Vercel only on GitHub pushes to the `main` branch. Agent deployments to Render background workers are triggered programmatically via the Render REST API from the Next.js user interface.
+- **Voice Agent**: A universal, standalone Node.js process utilizing the standard LiveKit Gemini Realtime API paradigm (`google.beta.realtime.RealtimeModel`). It dynamically extracts the `profileId` from the LiveKit room name to serve the correct prompt and knowledge base.
+- **CI/CD**: The Next.js frontend deploys to Vercel. The universal Voice Agent backend runs as a single service, which can be deployed to Render via the included `render.yaml` blueprint.
 
 ## Setup Instructions
 
@@ -40,8 +40,6 @@ GOOGLE_API_KEY=your_google_gemini_api_key
 # Database
 DATABASE_URL=your_neon_postgres_url
 
-# Render (For programmatic agent deployment)
-RENDER_API_KEY=your_render_api_key
 ```
 
 ### Installation
@@ -60,10 +58,21 @@ pnpm install
 pnpm run dev
 ```
 
-2. Start the LiveKit standalone voice agent process:
+2. Start the LiveKit universal voice agent process:
 
 ```bash
 npx tsx server/agent.ts dev
 ```
 
-This will run the Voice Agent process connecting to your LiveKit room, waiting for an active connection to test.
+This will run the universal Voice Agent worker, connecting to your LiveKit room, waiting to dynamically serve any active connection.
+
+### Deploying the Universal Agent
+
+Instead of deploying a separate worker for every single profile, you only need to deploy the universal agent **once**.
+
+To deploy the agent to Render using the Blueprint spec:
+1. Go to the Render Dashboard and click **New+** -> **Blueprint**.
+2. Connect your repository.
+3. Render will automatically detect the `render.yaml` file in the root of the project.
+4. Fill in the required environment variables (Database URL, LiveKit credentials, API keys, and your Next.js frontend URL).
+5. Deploy. The universal agent will now constantly run and handle all profile sessions dynamically.
