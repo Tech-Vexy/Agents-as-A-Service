@@ -48,29 +48,6 @@ export async function initializeDatabase() {
           value TEXT NOT NULL
         );
       `);
-
-      // Insert default row if empty
-      const countRes = await client.query('SELECT count(*) as count FROM profiles');
-      const count = parseInt(countRes.rows[0].count, 10);
-
-      if (count === 0) {
-        const insertRes = await client.query(`
-          INSERT INTO profiles (name, industry, "technicalSpecs", tone)
-          VALUES ($1, $2, $3, $4) RETURNING id
-        `, [
-          "SolarTech Solutions",
-          "Renewable Energy",
-          "Offers N-Type bifacial panels and standard monocrystalline panels. Standard panels are 400W. N-Type bifacial are 450W but capture 20% more in cloudy conditions.",
-          "Professional, technical, yet empathetic to user concerns."
-        ]);
-        const newId = insertRes.rows[0].id;
-
-        await client.query(`
-          INSERT INTO settings (key, value)
-          VALUES ($1, $2)
-          ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value
-        `, ['active_profile_id', newId.toString()]);
-      }
       
       console.log("Connected successfully and initialized schema.");
       return; // Success, exit retry loop
