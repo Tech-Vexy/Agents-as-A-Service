@@ -12,12 +12,18 @@ export default async function agent(ctx: JobContext) {
     try {
       const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://127.0.0.1:3000';
 
-      // If a specific PROFILE_ID is set in the environment (e.g. deployed distinct agent),
-      // fetch that specific profile. Otherwise, fall back to the dynamic "active" profile.
-      const profileId = process.env.PROFILE_ID;
+      // The room name format is typically `room-tenant-${profileId}` or `voice-agent-room`
+      let profileId = null;
+      const roomMatch = ctx.room.name?.match(/^room-tenant-(\d+)$/);
+      if (roomMatch && roomMatch[1]) {
+        profileId = roomMatch[1];
+      }
+
+      // We no longer rely on process.env.PROFILE_ID for the universal agent.
+      // We extract it dynamically from the room context.
       const endpoint = profileId ? `/api/profiles/${profileId}` : '/api/profile';
 
-      console.log(`Fetching agent configuration from ${endpoint}`);
+      console.log(`Fetching agent configuration from ${endpoint} (Room: ${ctx.room.name})`);
 
       const response = await fetch(`${baseUrl}${endpoint}`);
       if (response.ok) {
@@ -94,6 +100,6 @@ if (require.main === module) {
   // @ts-expect-error: Next.js strict TS compiler incorrectly rejects the standard LiveKit CLI runner payload
   cli.runApp({
       agent: __filename,
-      agentName: process.env.LIVEKIT_AGENT_NAME || "default-agent"
+      agentName: "voice-agent-saas" // Universal agent name
   });
 }

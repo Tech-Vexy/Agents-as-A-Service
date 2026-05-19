@@ -27,16 +27,15 @@ export async function GET(request: Request) {
   try {
     const token = await at.toJwt();
 
-    // Create an explicit dispatch for the targeted distinct agent
+    // Create an explicit dispatch for the targeted universal agent
     if (profileId) {
       const livekitUrl = process.env.LIVEKIT_URL || process.env.NEXT_PUBLIC_LIVEKIT_URL;
       if (livekitUrl) {
          const agentClient = new AgentDispatchClient(livekitUrl, apiKey, apiSecret);
-         const targetAgentName = `tenant-${profileId}`;
+         const targetAgentName = `voice-agent-saas`;
          console.log(`Creating explicit agent dispatch for room ${roomName} targeting agent ${targetAgentName}`);
 
          // Retry mechanism for triggering the agent worker
-         // Note: We use a longer initial wait if Render is still spinning up
          const maxRetries = 3;
          for (let i = 0; i < maxRetries; i++) {
            try {

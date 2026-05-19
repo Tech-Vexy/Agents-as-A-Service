@@ -34,7 +34,7 @@ export function AgentConsole({ onConnect, onDisconnect, profileName, canConnect 
 
   // Find the agent participant (agents typically have specific metadata or attributes)
   const agentParticipant = useMemo(() => {
-    return remoteParticipants.find(p => p.isAgent || p.kind === 'agent');
+    return remoteParticipants.find(p => p.isAgent || (p.kind as unknown as string) === 'agent' || p.kind === 2); // 2 is typically ParticipantInfo_Kind.AGENT
   }, [remoteParticipants]);
 
   // Create a session object when agent is present
@@ -45,11 +45,23 @@ export function AgentConsole({ onConnect, onDisconnect, profileName, canConnect 
       room,
       participant: agentParticipant,
       isConnected: true,
+      connectionState: ConnectionState.Connected,
+      local: {
+        cameraTrack: undefined,
+        microphoneTrack: undefined,
+        screenShareTrack: undefined,
+      },
+      internal: {},
       end: () => {
         room.disconnect();
         onDisconnect();
+      },
+      connect: () => Promise.resolve(),
+      disconnect: () => {
+        room.disconnect();
+        onDisconnect();
       }
-    };
+    } as unknown as import("@livekit/components-react").UseSessionReturn;
   }, [agentParticipant, room, onDisconnect]);
 
   return (
