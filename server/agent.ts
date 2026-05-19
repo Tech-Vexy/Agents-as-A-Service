@@ -12,12 +12,18 @@ export default async function agent(ctx: JobContext) {
     try {
       const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://127.0.0.1:3000';
 
-      // If a specific PROFILE_ID is set in the environment (e.g. deployed distinct agent),
-      // fetch that specific profile. Otherwise, fall back to the dynamic "active" profile.
-      const profileId = process.env.PROFILE_ID;
+      // The room name format is typically `room-tenant-${profileId}` or `voice-agent-room`
+      let profileId = null;
+      const roomMatch = ctx.room.name?.match(/^room-tenant-(\d+)$/);
+      if (roomMatch && roomMatch[1]) {
+        profileId = roomMatch[1];
+      }
+
+      // We no longer rely on process.env.PROFILE_ID for the universal agent.
+      // We extract it dynamically from the room context.
       const endpoint = profileId ? `/api/profiles/${profileId}` : '/api/profile';
 
-      console.log(`Fetching agent configuration from ${endpoint}`);
+      console.log(`Fetching agent configuration from ${endpoint} (Room: ${ctx.room.name})`);
 
       const response = await fetch(`${baseUrl}${endpoint}`);
       if (response.ok) {
@@ -81,10 +87,34 @@ IMPORTANT:
     // Ensure the session is ready before attempting to speak
     console.log('Voice session started for room:', ctx.room.name);
 
-    // Use the session to speak the greeting
-    session.say(`Hello! Thank you for contacting ${businessProfile.name}. I'm your AI assistant. How can I help you today?`, {
-        allowInterruptions: true
-    });
+    const greeting = `Hello! Thank you for contacting ${businessProfile.name}. I'm your AI assistant. How can I help you today?`;
+
+    // Wait for the user to join the room before speaking the greeting
+    let hasGreeted = false;
+
+    // Helper to trigger greeting
+    const triggerGreeting = () => {
+      if (!hasGreeted) {
+        hasGreeted = true;
+        console.log("User detected. Speaking greeting...");
+        session.say(greeting, { allowInterruptions: true });
+      }
+    };
+
+    // If there is already a remote participant in the room, greet them immediately
+    if (ctx.room.remoteParticipants.size > 0) {
+      triggerGreeting();
+    } else {
+      // Otherwise, wait for a participant to connect
+      console.log("Waiting for user to join before speaking...");
+      // Use any to bypass TS compilation error since isAgent might not be on the core participant type
+      ctx.room.on('participantConnected', (participant: any) => {
+         // Optionally, ignore other agents if there are any
+         if (!participant.isAgent && participant.kind !== 'agent' && participant.kind !== 2) {
+            triggerGreeting();
+         }
+      });
+    }
 }
 
 // LiveKit CLI logic for starting the agent
@@ -94,6 +124,6 @@ if (require.main === module) {
   // @ts-expect-error: Next.js strict TS compiler incorrectly rejects the standard LiveKit CLI runner payload
   cli.runApp({
       agent: __filename,
-      agentName: process.env.LIVEKIT_AGENT_NAME || "default-agent"
+      agentName: "voice-agent-saas" // Universal agent name
   });
 }

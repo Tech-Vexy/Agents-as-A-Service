@@ -13,18 +13,6 @@ export function useProfiles() {
   });
 }
 
-export function useActiveAgents() {
-  return useQuery<{ activeServices: { profileId: number }[] }>({
-    queryKey: ["active-agents"],
-    queryFn: async () => {
-      const res = await fetch("/api/agents/active");
-      if (!res.ok) throw new Error("Failed to fetch active agents");
-      return res.json();
-    },
-    refetchInterval: 10000, 
-  });
-}
-
 export function useUpdateProfile() {
   const queryClient = useQueryClient();
   return useMutation({
@@ -69,23 +57,3 @@ export function useCreateProfile() {
   });
 }
 
-export function useDeployAgent() {
-  return useMutation({
-    mutationFn: async ({ profileId, profileName }: { profileId: number; profileName: string }) => {
-      const resp = await fetch("/api/agents/deploy", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ profileId, profileName })
-      });
-      const data = await resp.json();
-      if (!resp.ok) throw new Error(data.message || "Deployment failed");
-      return data;
-    },
-    onSuccess: (data) => {
-      toast.success(data.message || "Agent deployed successfully!");
-    },
-    onError: (error) => {
-      toast.error(error.message || "Failed to deploy agent");
-    }
-  });
-}

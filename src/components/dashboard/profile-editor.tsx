@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Plus, Loader2, Rocket, UserCircle } from "lucide-react";
 import type { BusinessProfile } from "@/lib/store";
-import { useProfiles, useActiveAgents, useUpdateProfile, useCreateProfile, useDeployAgent } from "@/hooks/use-profiles";
+import { useProfiles, useUpdateProfile, useCreateProfile } from "@/hooks/use-profiles";
 
 interface ProfileEditorProps {
   onProfileSelect: (id: number) => void;
@@ -12,10 +12,8 @@ interface ProfileEditorProps {
 
 export function ProfileEditor({ onProfileSelect, selectedProfileId }: ProfileEditorProps) {
   const { data: profiles = [], isLoading: isLoadingProfiles } = useProfiles();
-  const { data: activeAgents } = useActiveAgents();
   const updateProfile = useUpdateProfile();
   const createProfile = useCreateProfile();
-  const deployAgent = useDeployAgent();
 
   const [localProfile, setLocalProfile] = useState<Partial<BusinessProfile>>({
     name: "",
@@ -24,8 +22,6 @@ export function ProfileEditor({ onProfileSelect, selectedProfileId }: ProfileEdi
     tone: "",
     avatar_url: "",
   });
-
-  const activeAgentIds = activeAgents?.activeServices?.map(s => s.profileId) || [];
 
   useEffect(() => {
     if (selectedProfileId) {
@@ -61,12 +57,6 @@ export function ProfileEditor({ onProfileSelect, selectedProfileId }: ProfileEdi
     }
   };
 
-  const handleDeploy = () => {
-    if (localProfile.id && localProfile.name) {
-      deployAgent.mutate({ profileId: localProfile.id, profileName: localProfile.name });
-    }
-  };
-
   const handleNewProfile = () => {
     setLocalProfile({
       name: "New Agent",
@@ -91,7 +81,7 @@ export function ProfileEditor({ onProfileSelect, selectedProfileId }: ProfileEdi
               <option value="" disabled>Select a Profile</option>
               {profiles.map(p => (
                  <option key={p.id} value={p.id}>
-                   {p.name} {activeAgentIds.includes(p.id!) ? "🟢" : ""}
+                   {p.name}
                  </option>
               ))}
             </select>
@@ -163,15 +153,6 @@ export function ProfileEditor({ onProfileSelect, selectedProfileId }: ProfileEdi
            className="bg-neutral-800 hover:bg-neutral-700 px-4 py-2 rounded text-sm font-medium transition-colors border border-neutral-700"
          >
            {updateProfile.isPending || createProfile.isPending ? "Saving..." : localProfile.id ? "Update Brain" : "Create Brain"}
-         </button>
-
-         <button 
-           onClick={handleDeploy} 
-           disabled={deployAgent.isPending || !localProfile.id} 
-           className="bg-blue-600 hover:bg-blue-700 disabled:bg-neutral-800 px-4 py-2 rounded text-sm font-bold flex items-center gap-2 transition-all shadow-lg shadow-blue-900/20"
-         >
-           {deployAgent.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Rocket className="w-4 h-4" />}
-           {activeAgentIds.includes(localProfile.id || -1) ? "Redeploy Agent" : "Deploy Agent"}
          </button>
       </div>
     </section>
