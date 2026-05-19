@@ -8,7 +8,7 @@ This project uses a single, universal agent architecture. A single LiveKit worke
 - **Frontend/Backend APIs**: Built with Next.js 15 (App Router).
 - **Database**: Hosted Neon PostgreSQL database (via `@neondatabase/serverless`).
 - **Voice Agent**: A universal, standalone Node.js process utilizing the standard LiveKit Gemini Realtime API paradigm (`google.beta.realtime.RealtimeModel`). It dynamically extracts the `profileId` from the LiveKit room name to serve the correct prompt and knowledge base.
-- **CI/CD**: The Next.js frontend deploys to Vercel. The universal Voice Agent backend runs as a single service, which can be deployed to Render via the included `render.yaml` blueprint.
+- **CI/CD**: The Next.js frontend deploys to Vercel. The universal Voice Agent backend runs as a single service, which is deployed directly to LiveKit Cloud using their managed agents infrastructure.
 
 ## Setup Instructions
 
@@ -68,11 +68,17 @@ This will run the universal Voice Agent worker, connecting to your LiveKit room,
 
 ### Deploying the Universal Agent
 
-Instead of deploying a separate worker for every single profile, you only need to deploy the universal agent **once**.
+Instead of deploying a separate worker for every single profile, you only need to deploy the universal agent **once** to LiveKit Cloud.
 
-To deploy the agent to Render using the Blueprint spec:
-1. Go to the Render Dashboard and click **New+** -> **Blueprint**.
-2. Connect your repository.
-3. Render will automatically detect the `render.yaml` file in the root of the project.
-4. Fill in the required environment variables (Database URL, LiveKit credentials, API keys, and your Next.js frontend URL).
-5. Deploy. The universal agent will now constantly run and handle all profile sessions dynamically.
+To deploy the agent directly to LiveKit Cloud using the LiveKit CLI:
+
+1. Ensure you have the [LiveKit CLI installed](https://docs.livekit.io/agents/quickstart/#install-the-livekit-cli).
+2. Authenticate the CLI with your project (if you haven't already):
+   ```bash
+   lk project authenticate
+   ```
+3. Deploy the agent worker to LiveKit Cloud:
+   ```bash
+   lk app deploy --env DATABASE_URL=your_db_url --env GOOGLE_API_KEY=your_google_key --env NEXT_PUBLIC_SITE_URL=https://your-frontend-url.com
+   ```
+4. The universal agent will now constantly run on LiveKit's infrastructure and handle all profile sessions dynamically based on the room context.
